@@ -24,7 +24,7 @@ RUN NPS_VERSION=1.12.34.2 \
     TMP_DIR=$(mktemp -d) &&\
     wget https://github.com/pagespeed/ngx_pagespeed/archive/v${NPS_VERSION}-beta.zip &&\
     unzip v${NPS_VERSION}-beta.zip -d ${TMP_DIR} &&\
-    cd ${TMP_DIR}/ngx_pagespeed-${NPS_VERSION}-beta/ &&\
+    cd ${TMP_DIR}/nincubator-pagespeed-ngx-${NPS_VERSION}-beta/ &&\
     psol_url=https://dl.google.com/dl/page-speed/psol/${NPS_VERSION}.tar.gz \
     [ -e scripts/format_binary_url.sh ] && psol_url=$(scripts/format_binary_url.sh PSOL_BINARY_URL) &&\
     wget ${psol_url} &&\
@@ -41,7 +41,7 @@ RUN NPS_VERSION=1.12.34.2 \
     cd ${TMP_DIR}/nginx-release-${NGINX_VERSION} &&\
     sed -i -e 's/Server: nginx" CRLF/"/g' src/http/ngx_http_header_filter_module.c && sed -i -e 's/Server: " NGINX_VER CRLF/"/g' src/http/ngx_http_header_filter_module.c &&\
     ./auto/configure \
-        --add-module=${TMP_DIR}/ngx_pagespeed-${NPS_VERSION}-beta \
+        --add-module=${TMP_DIR}/incubator-pagespeed-ngx-${NPS_VERSION}-beta \
         --conf-path=/etc/nginx/nginx.conf \
         --error-log-path=${NGINX_LOG_PATH}/error.log \
         --group=${NGINX_GROUP} \
