@@ -76,3 +76,5 @@ RUN NPS_VERSION=1.12.34.2 \
 
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
+
+CMD /usr/sbin/nginx
